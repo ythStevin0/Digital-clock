@@ -31,6 +31,14 @@ root = tk.Tk()
 root.title('Jam Digital')
 root.config(bg='#061E29')
 
+# 2.0 Mengatur agar jendela muncul di tengah layar
+root.update_idletasks()
+width = 600
+height = 250
+x = (root.winfo_screenwidth() // 2) - (width // 2)
+y = (root.winfo_screenheight() // 2) - (height // 2)
+root.geometry(f'{width}x{height}+{x}+{y}')
+
 # 2.1 Bind tombol Escape untuk menutup aplikasi
 root.bind('<Escape>', lambda e: root.destroy())
 
