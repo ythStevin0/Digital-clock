@@ -6,11 +6,13 @@ import customtkinter as ctk
 is_24 = True
 
 def toggle_format():
+    """Mengganti format antara 24 jam dan 12 jam (AM/PM)"""
     global is_24
     is_24 = not is_24
     update_time()
 
 def update_time():
+    """Fungsi rekursif untuk memperbarui teks jam dan tanggal setiap detik"""
     if is_24:
         string_time = time.strftime('%H:%M:%S')
     else:
@@ -30,6 +32,7 @@ root.title('Jam Digital')
 root.config(bg='#061E29')
 
 # 3. Membuat Frame (Wadah) untuk Jam dan Tombol agar Sejajar
+# Menggunakan Frame agar widget di dalamnya bisa berjejer horizontal (side='left')
 frame_jam = tk.Frame(root, bg='#061E29')
 frame_jam.pack(pady=(30, 0)) # Memberi jarak dari atas jendela
 
