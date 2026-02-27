@@ -4,10 +4,11 @@ Simple digital clock application built using Python and Tkinter.
 
 ## Features
 
-- Real-time clock display
+- Real-time clock display (12/24h format)
+- Date display (Day, Date, Month, Year)
+- Modern Dark UI using CustomTkinter
+- Rounded buttons and sleek design
 - Updates every second
-- Simple GUI interface
-- Dark theme design
 
 ## Installation
 
@@ -27,6 +28,7 @@ python main.py
 
 - Python 3.x
 - Tkinter (included with Python)
+- CustomTkinter (`pip install customtkinter`)
 
 ## License
 
