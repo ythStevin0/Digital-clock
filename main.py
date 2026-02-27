@@ -31,6 +31,9 @@ root = tk.Tk()
 root.title('Jam Digital')
 root.config(bg='#061E29')
 
+# 2.1 Bind tombol Escape untuk menutup aplikasi
+root.bind('<Escape>', lambda e: root.destroy())
+
 # 3. Membuat Frame (Wadah) untuk Jam dan Tombol agar Sejajar
 # Menggunakan Frame agar widget di dalamnya bisa berjejer horizontal (side='left')
 frame_jam = tk.Frame(root, bg='#061E29')
