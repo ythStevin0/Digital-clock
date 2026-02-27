@@ -22,3 +22,6 @@ wheel.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Virtual Environments
+.venv/
