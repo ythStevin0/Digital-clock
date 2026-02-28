@@ -49,7 +49,7 @@ root.config(bg='#061E29')
 # 2.0 Mengatur agar jendela muncul di tengah layar
 root.update_idletasks()
 width = 600
-height = 300
+height = 550
 x = (root.winfo_screenwidth() // 2) - (width // 2)
 y = (root.winfo_screenheight() // 2) - (height // 2)
 root.geometry(f'{width}x{height}+{x}+{y}')
@@ -102,6 +102,38 @@ label_date = tk.Label(
     foreground='#F3F4F4'
 )
 label_date.pack(pady=(10, 30)) # Berada di bawah label_greeting
+
+# --- BAGIAN CATATAN (STICKY NOTE) ---
+# Bagian ini untuk menulis pesan atau pengingat di dalam jam
+
+# 7. Judul Catatan
+label_note_head = tk.Label(
+    root, 
+    text='✍️ Catatan Hari Ini:',
+    font=('verdana', 10, 'bold'),
+    background='#061E29',
+    foreground='#F3F4F4'
+)
+label_note_head.pack(pady=(20, 0)) # Memberi jarak 20 dari atas
+
+# 8. Kotak Teks (Tempat Mengetik)
+text_note = tk.Text(
+    root,
+    height=5,             # Kotak ini setinggi 5 baris
+    width=45,             # Kotak ini selebar 45 karakter   
+    font=('verdana', 10),
+    background='#061E29', # Menggunakan font Verdaba ukuran 10 # Warna kotak (biru gelap agar beda dengan background)
+    foreground='white',   # Warna tulisan yang diketik (putih)
+    insertbackground='white', # Warna kursor ketik (putih) agar terlihat
+    padx=15,              # Jarak tulisan ke pinggir kotak (kiri-kanan)
+    pady=15,              # Jarak tulisan ke pinggir kotak (atas-bawah)
+    border=0              # Menghilangkan garis pinggir kotak agar terlihat modern
+)
+# Menempatkan kotak ke dalam jendela
+text_note.pack(pady=(10, 30), padx=20)
+
+# 9. Mengisi titik-titik awal (Placeholder) agar tahu tempat mengetik
+text_note.insert("1.0", "...")
 
 # 6. Menjalankan Aplikasi
 update_time()
