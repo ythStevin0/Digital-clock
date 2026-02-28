@@ -12,7 +12,8 @@ def toggle_format():
     update_time()
 
 def update_time():
-    """Fungsi rekursif untuk memperbarui teks jam dan tanggal setiap detik"""
+    """Fungsi rekursif untuk memperbarui teks jam, sapaan, dan tanggal setiap detik"""
+    # 1. Update Jam
     if is_24:
         string_time = time.strftime('%H:%M:%S')
     else:
@@ -20,6 +21,20 @@ def update_time():
     
     label_time.config(text=string_time) 
 
+    # 2. Update Sapaan (Greeting)
+    hour = int(time.strftime('%H'))
+    if 5 <= hour < 11:
+        greeting = "Selamat Pagi 🌅"
+    elif 11 <= hour < 15:
+        greeting = "Selamat Siang ☀️"
+    elif 15 <= hour < 18:
+        greeting = "Selamat Sore 🌤️"
+    else:
+        greeting = "Selamat Malam 🌙"
+    
+    label_greeting.config(text=greeting)
+
+    # 3. Update Tanggal
     string_date = time.strftime('%A, %d %B %Y')
     label_date.config(text=string_date)
 
@@ -34,7 +49,7 @@ root.config(bg='#061E29')
 # 2.0 Mengatur agar jendela muncul di tengah layar
 root.update_idletasks()
 width = 600
-height = 250
+height = 300
 x = (root.winfo_screenwidth() // 2) - (width // 2)
 y = (root.winfo_screenheight() // 2) - (height // 2)
 root.geometry(f'{width}x{height}+{x}+{y}')
@@ -70,14 +85,23 @@ btn_toggle = ctk.CTkButton(
 )
 btn_toggle.pack(side='left', padx=10) # Berada di sebelah kanan jam
 
-# 5. Membuat Widget Tanggal (Di bawah Frame Jam)
+# 5. Membuat Widget Sapaan (Di bawah Jam)
+label_greeting = tk.Label(
+    root,
+    font=('verdana', 15, 'italic'),
+    background='#061E29',
+    foreground='#5F9598'
+)
+label_greeting.pack(pady=(5, 0))
+
+# 6. Membuat Widget Tanggal (Di bawah Sapaan)
 label_date = tk.Label(
     root,
     font=('verdana', 25, 'bold'),
     background='#061E29',
     foreground='#F3F4F4'
 )
-label_date.pack(pady=(10, 30)) # Berada di bawah frame_jam
+label_date.pack(pady=(10, 30)) # Berada di bawah label_greeting
 
 # 6. Menjalankan Aplikasi
 update_time()
